@@ -10,7 +10,7 @@ import MovieCard from '../MovieCard/MovieCard';
 const Banner = () => {
   return (
     <>
-      <section className={`h-50p md:h-full ${style.bg__img}`}>
+      <section className={`h-50p md:h-full ${style.bg__img} ${style.hero__container}`}>
         <header className={`flex flex-row justify-between md:justify-end ${style.header__wrapper}`}>
           <div className='text-white md:hidden'>
             <a href=""> <Image

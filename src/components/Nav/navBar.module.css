@@ -1,24 +1,36 @@
 .nav__wrapper{
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   padding-top: 15vh;
 }
 
 .nav__container{
   height: 60vh;
-  /* background-color: aqua; */
-  /* margin-top: 50px; */
 }
 
 .icons__container{
   height: 30vh;
-  /* background-color: aqua; */
 }
 
-@media (maxWidth: 768px) {
-  .icons__container{
+@media (max-width: 768px) {
+  .nav__wrapper{
+    height: 50px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: self-end;
+    /* padding-top: 5px; */
   }
+  
+  .icons__container{
+    height: 0vh;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__container{
+    height: 0vh;
+  }
+  
 }

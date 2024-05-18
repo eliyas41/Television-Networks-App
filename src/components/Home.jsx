@@ -8,11 +8,10 @@ const Home = () => {
   return (
     <main>
       <div className="flex flex-col md:flex-row">
-        <div className="bg-custom-dark-blue order-3 md:order-1 w-full md:w-[15%]"><NavBar /></div>
-        <div className="bg-custom-dark-blue order-2 md:order-2 w-full md:w-[20%]"><Channels /></div>
-        <div className="order-1 md:order-3 w-full md:w-[65%]">
+        <div className="bg-custom-dark-blue order-3 md:order-1 w-full md:w-[12%]"><NavBar /></div>
+        <div className="bg-custom-dark-blue order-2 md:order-2 w-full md:w-[17%]"><Channels /></div>
+        <div className="order-1 md:order-3 w-full md:w-[75%]">
           <Banner />
-          <div className={style.hero__container}></div>
         </div>
       </div>
     </main>

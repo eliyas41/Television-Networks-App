@@ -1,9 +1,10 @@
 import React from 'react'
+import Home from '@/components/Home';
 
 const page = () => {
   return (
     <>
-      <h1>Television Network App</h1>
+      <Home />
     </>
   )
 }

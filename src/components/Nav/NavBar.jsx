@@ -8,11 +8,11 @@ import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 
 const NavBar = () => {
   return (
-    <section className={styles.nav__wrapper}>
+    <section className={`${styles.nav__wrapper} md:h-screen`}>
       <div className={` ${styles.nav__container}`}>
-        <div>Logo</div>
+        <div className='hidden md:block text-white'>Logo</div>
 
-        <div className={`flex flex-col justify-between ${styles.icons__container}`}>
+        <div className={`md:flex flex-col justify-between ${styles.icons__container}`}>
           <a className='text-white' href="#"><LiveTvRoundedIcon style={{ fontSize: 40 }} /></a>
           <a className='text-white' href="/favorite"><StarRoundedIcon style={{ fontSize: 40 }} /></a>
           <a className='text-white' href="/watch"><AccessTimeFilledRoundedIcon style={{ fontSize: 40 }} /></a>

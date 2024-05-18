@@ -2,21 +2,20 @@ import React from 'react'
 import styles from "./home.module.css"
 import NavBar from './Nav/NavBar'
 import Channels from './Channels/Channels'
-import Header from './Header/Header'
 import Banner from './Banner/Banner'
 
 const Home = () => {
   return (
     <main>
-      <div className='flex'>
-        <div className='bg-purple-900 flex-none w-36 h-screen'><NavBar /></div>
-        <div className='bg-purple-700 flex-none w-60'><Channels /></div>
-        <div className='bg-purple-500 flex-1'>
-          <Header />
+      <div className="flex flex-col md:flex-row">
+        <div className="bg-custom-dark-blue order-3 md:order-1 w-full md:w-[15%]"><NavBar /></div>
+        <div className="bg-custom-dark-blue order-2 md:order-2 w-full md:w-[20%]"><Channels /></div>
+        <div className="order-1 md:order-3 w-full md:w-[65%]">
           <Banner />
         </div>
       </div>
-    </main>)
+    </main>
+  )
 }
 
 export default Home

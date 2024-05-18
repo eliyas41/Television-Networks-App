@@ -11,7 +11,7 @@ import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlin
 
 const MovieCard = () => {
   return (
-    <section className='flex flex-row items-center justify-between'>
+    <section className='flex flex-row items-center justify-between gap-3'>
       <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14" sx={{ maxWidth: 220, height: 250 }}>
         <CardActions className='flex justify-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
           <IconButton aria-label="add to favorites">
@@ -53,7 +53,6 @@ const MovieCard = () => {
           <small className='text-white'>+900 Series</small>
         </CardContent>
       </Card>
-
 
       <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14" sx={{ maxWidth: 220, height: 250 }}>
         <CardActions className='flex justify-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>

@@ -12,7 +12,7 @@ const Home = () => {
         <div className="bg-custom-dark-blue order-2 md:order-2 w-full md:w-[20%]"><Channels /></div>
         <div className="order-1 md:order-3 w-full md:w-[65%]">
           <Banner />
-          {/* <div className={style.hero__container}></div> */}
+          <div className={style.hero__container}></div>
         </div>
       </div>
     </main>

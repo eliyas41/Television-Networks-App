@@ -1,5 +1,24 @@
 .nav__wrapper{
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  padding-top: 15vh;
+}
+
+.nav__container{
+  height: 60vh;
+  /* background-color: aqua; */
+  /* margin-top: 50px; */
+}
+
+.icons__container{
+  height: 30vh;
+  /* background-color: aqua; */
+}
+
+@media (maxWidth: 768px) {
+  .icons__container{
+    display: flex;
+    justify-content: flex-end;
+  }
 }

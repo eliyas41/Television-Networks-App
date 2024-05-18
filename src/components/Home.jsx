@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./home.module.css"
+import style from "./home.module.css"
 import NavBar from './Nav/NavBar'
 import Channels from './Channels/Channels'
 import Banner from './Banner/Banner'
@@ -12,10 +12,11 @@ const Home = () => {
         <div className="bg-custom-dark-blue order-2 md:order-2 w-full md:w-[20%]"><Channels /></div>
         <div className="order-1 md:order-3 w-full md:w-[65%]">
           <Banner />
+          {/* <div className={style.hero__container}></div> */}
         </div>
       </div>
     </main>
   )
 }
 
-export default Home
+export default Home;

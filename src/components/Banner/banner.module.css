@@ -5,6 +5,11 @@
   background-repeat: no-repeat;
 }
 
+.category_container{
+  position: relative;
+  margin-top: -33%;
+}
+
 @media screen and (max-width: 768px) {
   .bg__img {
     height: 45vh;

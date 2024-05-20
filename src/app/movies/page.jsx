@@ -91,17 +91,17 @@ export default function MenuAppBar() {
                 2h 22m
               </div>
 
-              <div className='flex flex-col md:flex-row pt-24 md:pt-60 gap-8 md:gap-3'>
+              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
                 <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
               </div>
 
@@ -122,49 +122,17 @@ export default function MenuAppBar() {
                 2h 22m
               </div>
 
-              <div className='flex flex-col md:flex-row pt-24 md:pt-60 gap-8 md:gap-3'>
+              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
                 <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
-                </IconButton>
-              </div>
-
-            </CardActions>
-          </Card>
-
-
-          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
-            <div className='pt-72 md:pt-0'>
-              <CardContent>
-                <Typography variant="body2" color="text.primary">
-                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
-                </Typography>
-              </CardContent>
-            </div>
-
-            <CardActions className='flex flex-col' disableSpacing>
-              <div className='text-white font-extrabold md:pl-48'>
-                2h 22m
-              </div>
-
-              <div className='flex flex-col md:flex-row pt-24 md:pt-60 gap-8 md:gap-3'>
-                <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
               </div>
 
@@ -186,17 +154,49 @@ export default function MenuAppBar() {
                 2h 22m
               </div>
 
-              <div className='flex flex-col md:flex-row pt-24 md:pt-60 gap-8 md:gap-3'>
+              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
                 <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
 
                 <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "40px" }} />
+                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                </IconButton>
+              </div>
+
+            </CardActions>
+          </Card>
+
+
+          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
+            <div className='pt-72 md:pt-0'>
+              <CardContent>
+                <Typography variant="body2" color="text.primary">
+                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
+                </Typography>
+              </CardContent>
+            </div>
+
+            <CardActions className='flex flex-col' disableSpacing>
+              <div className='text-white font-extrabold md:pl-48'>
+                2h 22m
+              </div>
+
+              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
+                <IconButton aria-label="add to favorites">
+                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                </IconButton>
+
+                <IconButton aria-label="add to favorites">
+                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                </IconButton>
+
+                <IconButton aria-label="add to favorites">
+                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
                 </IconButton>
               </div>
 

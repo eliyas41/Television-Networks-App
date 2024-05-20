@@ -6,7 +6,9 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
+import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,16 +17,17 @@ import CloudRoundedIcon from '@mui/icons-material/CloudRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NavBar from "../../components/Nav/NavBar"
+import style from "./page.module.css"
 
 export default function MenuAppBar() {
 
   return (
     <section className='flex'>
-      <div className='bg-custom-white-light md:w-[12%] hidden md:block'>
+      <div className='bg-custom-white-light hidden md:block md:w-[12%]'>
         <NavBar />
       </div>
 
-      <Box sx={{ flexGrow: 1, height: "150px", bgcolor: '#1B1C3A' }}>
+      <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ bgcolor: '#1B1C3A', height: "150px", paddingTop: "40px" }}>
           <Toolbar>
             <Link href="/">
@@ -74,24 +77,113 @@ export default function MenuAppBar() {
         </AppBar>
 
 
-        <div className='flex '>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
+        <div className={`${style.poster__container} bg-slate-800 flex flex-col md:flex-row gap-4 justify-start items-center`}>
+          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }}>
+            <CardMedia className='w-full h-3/4'
               component="img"
               height="194"
-              image="./paella.jpg"
+              image="https://mui.com/static/images/cards/paella.jpg"
               alt="Paella dish"
             />
             <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
+              <Typography variant="body2" color="text.primary">
+                <small className='text-xl font-bold'>The Hunger Game</small>
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
+                <PlayCircleOutlineRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <AccessTimeRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <FavoriteBorderRoundedIcon />
+              </IconButton>
+            </CardActions>
+          </Card>
+
+          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }}>
+            <CardMedia
+              component="img"
+              height="194"
+              image="https://mui.com/static/images/cards/paella.jpg"
+              alt="Paella dish"
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.primary">
+                <small className='text-xl font-bold'>The Hunger Game</small>
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <PlayCircleOutlineRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <AccessTimeRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <FavoriteBorderRoundedIcon />
+              </IconButton>
+            </CardActions>
+          </Card>
+
+
+          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }}>
+            <CardMedia
+              component="img"
+              height="194"
+              image="https://mui.com/static/images/cards/paella.jpg"
+              alt="Paella dish"
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.primary">
+                <small className='text-xl font-bold'>The Hunger Game</small>
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <PlayCircleOutlineRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <AccessTimeRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <FavoriteBorderRoundedIcon />
+              </IconButton>
+            </CardActions>
+          </Card>
+
+
+          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }}>
+            <CardMedia
+              component="img"
+              height="194"
+              image="https://mui.com/static/images/cards/paella.jpg"
+              alt="Paella dish"
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.primary">
+                <small className='text-xl font-bold'>The Hunger Game</small>
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton aria-label="add to favorites">
+                <PlayCircleOutlineRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <AccessTimeRoundedIcon />
+              </IconButton>
+
+              <IconButton aria-label="add to favorites">
+                <FavoriteBorderRoundedIcon />
               </IconButton>
             </CardActions>
           </Card>

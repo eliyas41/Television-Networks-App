@@ -13,7 +13,27 @@ import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlin
 const MovieCard = () => {
   return (
     <section className='flex flex-row items-center justify-between gap-1'>
-      <Link href="/tv-live" passHref>
+      {/* {
+        types.map(type => (
+          <Link key={type.id} href={type.name === "Movies" ? "tv-live" : "#"} passHref>
+            <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14 cursor-pointer" sx={{ width: 220, height: 250 }}>
+              <CardActions className='flex justify-center items-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <SensorsIcon className='text-white w-24 h-24 font-light' />
+                </IconButton>
+              </CardActions>
+              <CardContent>
+                <Typography className='text-white font-light text-xl' variant="body2" color="text.secondary">
+                  {type.name}
+                </Typography>
+                <small className='text-white'>+5000 Channels</small>
+              </CardContent>
+            </Card>
+          </Link>
+        )
+        )
+      } */}
+      <Link href="#" passHref>
         <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14 cursor-pointer" sx={{ width: 220, height: 250 }}>
           <CardActions className='flex justify-center items-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
             <IconButton aria-label="add to favorites">
@@ -29,7 +49,7 @@ const MovieCard = () => {
         </Card>
       </Link>
 
-      <Link href="/movies" passHref>
+      <Link href="/tv-live" passHref>
         <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14" sx={{ width: 220, height: 250 }}>
           <CardActions className='flex justify-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
             <IconButton aria-label="add to favorites">
@@ -45,7 +65,7 @@ const MovieCard = () => {
         </Card>
       </Link>
 
-      <Link href="tv-shows" passHref>
+      <Link href="#" passHref>
         <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14" sx={{ width: 220, height: 250 }}>
           <CardActions className='flex justify-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
             <IconButton aria-label="add to favorites">
@@ -61,7 +81,7 @@ const MovieCard = () => {
         </Card>
       </Link>
 
-      <Link href="/sports" passHref>
+      <Link href="#" passHref>
         <Card className="bg-custom-dark-light-blue flex flex-col items-center gap-14" sx={{ width: 220, height: 250 }}>
           <CardActions className='flex justify-center w-48 h-24 bg-custom-dark-light mt-3' disableSpacing>
             <IconButton aria-label="add to favorites">

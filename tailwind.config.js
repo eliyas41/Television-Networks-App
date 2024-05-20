@@ -17,6 +17,7 @@ module.exports = {
         'custom-dark-light-blue': '#16183E',
         'custom-dark-light': "#0F102E",
         'custom-white-light': "#1B1C3A",
+        'white-light': "#555262"
       },
       height: {
         '10p': '10%',

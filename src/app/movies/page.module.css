@@ -1,0 +1,6 @@
+.card__container{
+  background-image: url(./10001.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

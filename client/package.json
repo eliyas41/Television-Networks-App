@@ -25,6 +25,7 @@
     "victory": "^37.0.2"
   },
   "devDependencies": {
+    "@types/node": "20.12.12",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

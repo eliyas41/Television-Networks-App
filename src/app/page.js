@@ -1,12 +1,28 @@
-import React from 'react'
+// import React from 'react'
+// import Home from '@/components/Home';
+
+// const page = () => {
+//   return (
+//     <>
+//       <Home />
+//     </>
+//   )
+// }
+
+// export default page;
+
+"use client"
 import Home from '@/components/Home';
 
-const page = () => {
+
+const page = ({ children }) => {
   return (
-    <>
-      <Home />
-    </>
+    <div >
+      {children}
+    </div>
   )
 }
 
 export default page;
+
+

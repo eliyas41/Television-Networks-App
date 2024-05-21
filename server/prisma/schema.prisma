@@ -56,7 +56,8 @@ model Category {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  phone String
-  email String
+  id       Int    @id @default(autoincrement())
+  phone    String @unique
+  email    String @unique
+  password String
 }

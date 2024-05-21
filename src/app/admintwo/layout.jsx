@@ -8,7 +8,7 @@ import { AiFillSignal } from "react-icons/ai";
 import { GiBurningTree } from "react-icons/gi";
 import { FaCircle } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
-import {DashboardTwo} from "./dashboardtwo/page"
+import { DashboardTwo } from "./dashboardtwo/page"
 
 const sideBar = [
   {
@@ -61,7 +61,7 @@ const page = ({ children }) => {
                 <div className="  py-3 px-16    hover:bg-slate-800 flex my-5">
                   <div>
                     {" "}
-                    <AiFillSignal className="w-7 h-7 mr-4 hover:text-white"/>{" "}
+                    <AiFillSignal className="w-7 h-7 mr-4 hover:text-white" />{" "}
                   </div>
                   <div className="hover:text-white">Dashboard</div>
                 </div>

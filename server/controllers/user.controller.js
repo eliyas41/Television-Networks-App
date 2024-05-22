@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 const { z } = require('zod');
 const bcrypt = require('bcrypt');
-const prisma = new PrismaClient();
 
 const saltRounds = 10;
 

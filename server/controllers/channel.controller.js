@@ -1,12 +1,44 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient, Prisma } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 // Get all channels
 const getChannels = async (req, res) => {
   try {
-    const channels = await prisma.channel.findMany();
-    res.json(channels);
+    const { page = 1, limit = 10, sortBy = 'id', sortOrder = 'asc', search = '' } = req.query;
+
+    // Convert limit to integer
+    const take = parseInt(limit);
+
+    // Define sorting options
+    const sortOptions = {
+      [sortBy]: sortOrder.toLowerCase() === 'desc' ? Prisma.SortOrder.desc : Prisma.SortOrder.asc,
+    };
+
+    // Define search query
+    const searchQuery = search.trim().toLowerCase();
+
+    // Define pagination options
+    const offset = (page - 1) * take;
+    const paginationOptions = {
+      take,
+      skip: offset,
+      orderBy: sortOptions,
+      where: {
+        OR: [
+          { name: { contains: searchQuery } },
+        ],
+      },
+    };
+
+    // Fetch channels with pagination and search options
+    const channels = await prisma.channel.findMany(paginationOptions);
+
+    // Count total number of channels (for pagination)
+    const totalCount = await prisma.channel.count({ where: paginationOptions.where });
+
+    res.status(200).json({ channels, totalCount });
   } catch (error) {
+    console.error('Error fetching channels:', error);
     res.status(500).json({ error: 'Failed to fetch channels' });
   }
 };

@@ -1,12 +1,46 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient, Prisma } = require('@prisma/client');
 const prisma = new PrismaClient();
+
 
 // Get all movies
 const getMovies = async (req, res) => {
   try {
-    const movies = await prisma.movie.findMany();
-    res.json(movies);
-  } catch (err) {
+    const { page = 1, limit = 10, sortBy = 'id', sortOrder = 'asc', search = '' } = req.query;
+
+    // Convert limit to integer
+    const take = parseInt(limit);
+
+    // Define sorting options
+    const sortOptions = {
+      [sortBy]: sortOrder.toLowerCase() === 'desc' ? Prisma.SortOrder.desc : Prisma.SortOrder.asc,
+    };
+
+    // Define search query
+    const searchQuery = search.trim().toLowerCase();
+
+    // Define pagination options
+    const offset = (page - 1) * take;
+    const paginationOptions = {
+      take,
+      skip: offset,
+      orderBy: sortOptions,
+      where: {
+        OR: [
+          { title: { contains: searchQuery } },
+          { description: { contains: searchQuery } },
+        ],
+      },
+    };
+
+    // Fetch movies with pagination and search options
+    const movies = await prisma.movie.findMany(paginationOptions);
+
+    // Count total number of movies (for pagination)
+    const totalCount = await prisma.movie.count({ where: paginationOptions.where });
+
+    res.status(200).json({ movies, totalCount });
+  } catch (error) {
+    console.error('Error fetching movies:', error);
     res.status(500).json({ error: 'Failed to fetch movies' });
   }
 };

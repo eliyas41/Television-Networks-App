@@ -82,12 +82,12 @@ const getMovieById = async (req, res) => {
 // Create a new movie
 const createMovie = async (req, res) => {
   const { title, duration, description, channelId, typeId, categoryId, videoUrl } = req.body;
-  console.log(req.body)
+  // console.log(req.body)
   try {
     // Check if the videoUrl already exists
     const existingMovie = await prisma.movie.findFirst({ where: { videoUrl } });
     if (existingMovie) {
-      return res.status(400).json({ error: 'This video already exists' });
+      return res.status(400).json({ error: 'This video URL already exists' });
     }
 
     // Create a new movie

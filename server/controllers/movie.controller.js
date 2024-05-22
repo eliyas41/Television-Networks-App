@@ -5,14 +5,14 @@ const prisma = new PrismaClient();
 // Get all movies
 const getMovies = async (req, res) => {
   try {
-    const { page = 1, limit = 10, sortBy = 'id', sortOrder = 'asc', search = '' } = req.query;
+    const { page = 1, limit = 10, sortBy = 'id', sortOrder = 'asc', search = '', networkId, categoryId } = req.query;
 
     // Convert limit to integer
     const take = parseInt(limit);
 
     // Define sorting options
     const sortOptions = {
-      [sortBy]: sortOrder.toLowerCase() === 'desc' ? Prisma.SortOrder.desc : Prisma.SortOrder.asc,
+      [sortBy]: sortOrder.toLowerCase() === 'desc' ? 'desc' : 'asc',
     };
 
     // Define search query
@@ -20,23 +20,42 @@ const getMovies = async (req, res) => {
 
     // Define pagination options
     const offset = (page - 1) * take;
+
+    // Construct the where clause for filtering
+    const whereClause = {
+      AND: [
+        {
+          OR: [
+            { title: { contains: searchQuery, mode: 'insensitive' } },
+            { description: { contains: searchQuery, mode: 'insensitive' } },
+          ],
+        },
+      ],
+    };
+
+    // Include networkId in the where clause if provided
+    if (networkId) {
+      whereClause.AND.push({ channelId: parseInt(networkId) });
+    }
+
+    // Include categoryId in the where clause if provided
+    if (categoryId) {
+      whereClause.AND.push({ categoryId: parseInt(categoryId) });
+    }
+
+    // Define pagination options with sorting and filtering
     const paginationOptions = {
       take,
       skip: offset,
       orderBy: sortOptions,
-      where: {
-        OR: [
-          { title: { contains: searchQuery } },
-          { description: { contains: searchQuery } },
-        ],
-      },
+      where: whereClause,
     };
 
     // Fetch movies with pagination and search options
     const movies = await prisma.movie.findMany(paginationOptions);
 
     // Count total number of movies (for pagination)
-    const totalCount = await prisma.movie.count({ where: paginationOptions.where });
+    const totalCount = await prisma.movie.count({ where: whereClause });
 
     res.status(200).json({ movies, totalCount });
   } catch (error) {

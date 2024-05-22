@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -17,8 +18,25 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import NavBar from "../../components/Nav/NavBar"
 import style from "./page.module.css"
+import axios from "../../axios.config"
 
 export default function MenuAppBar() {
+  const [movies, setMovies] = useState([]);
+  console.log(movies)
+
+  const getMovies = async () => {
+    try {
+      const response = await axios.get("/movies");
+      console.log(response.data.movies)
+      setMovies(response.data.movies);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, [])
 
   return (
     <section className='flex'>
@@ -77,7 +95,48 @@ export default function MenuAppBar() {
 
 
         <div className={`${style.poster__container} bg-slate-800 flex flex-col md:flex-row gap-3 justify-between items-center`}>
-          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
+          {
+            movies.map((movie, id) => {
+              const videoLink = movie.videoUrl;
+              const duration = movie.duration;
+              const title = movie.title;
+              return (
+                <Link href={videoLink} target='blank'>
+                  <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
+                    <div className='pt-72 md:pt-0'>
+                      <CardContent>
+                        <Typography variant="body2" color="text.primary">
+                          <small className='text-xl text-white font-bold'>{title}</small>
+                        </Typography>
+                      </CardContent>
+                    </div>
+
+                    <CardActions className='flex flex-col' disableSpacing>
+                      <div className='text-white font-extrabold md:pl-48'>
+                        {duration}
+                      </div>
+
+                      <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
+                        <IconButton aria-label="add to favorites">
+                          <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                        </IconButton>
+
+                        <IconButton aria-label="add to favorites">
+                          <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                        </IconButton>
+
+                        <IconButton aria-label="add to favorites">
+                          <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
+                        </IconButton>
+                      </div>
+
+                    </CardActions>
+                  </Card>
+                </Link>
+              )
+            })
+          }
+          {/* <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
             <div className='pt-72 md:pt-0'>
               <CardContent>
                 <Typography variant="body2" color="text.primary">
@@ -201,7 +260,7 @@ export default function MenuAppBar() {
               </div>
 
             </CardActions>
-          </Card>
+          </Card> */}
 
         </div>
       </Box>

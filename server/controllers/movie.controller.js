@@ -135,3 +135,134 @@ module.exports = {
   updateMovie,
   deleteMovie,
 };
+
+
+// const { PrismaClient, Prisma } = require('@prisma/client');
+// const prisma = new PrismaClient();
+// const { io } = require('../app');
+
+// // Get all movies
+// const getMovies = async (req, res) => {
+//   try {
+//     const { page = 1, limit = 10, sortBy = 'id', sortOrder = 'asc', search = '', networkId, categoryId } = req.query;
+
+//     const take = parseInt(limit);
+//     const sortOptions = {
+//       [sortBy]: sortOrder.toLowerCase() === 'desc' ? 'desc' : 'asc',
+//     };
+
+//     const searchQuery = search.trim().toLowerCase();
+//     const offset = (page - 1) * take;
+
+//     const whereClause = {
+//       AND: [
+//         {
+//           OR: [
+//             { title: { contains: searchQuery, mode: 'insensitive' } },
+//             { description: { contains: searchQuery, mode: 'insensitive' } },
+//           ],
+//         },
+//       ],
+//     };
+
+//     if (networkId) {
+//       whereClause.AND.push({ channelId: parseInt(networkId) });
+//     }
+
+//     if (categoryId) {
+//       whereClause.AND.push({ categoryId: parseInt(categoryId) });
+//     }
+
+//     const paginationOptions = {
+//       take,
+//       skip: offset,
+//       orderBy: sortOptions,
+//       where: whereClause,
+//     };
+
+//     const movies = await prisma.movie.findMany(paginationOptions);
+//     const totalCount = await prisma.movie.count({ where: whereClause });
+
+//     res.status(200).json({ movies, totalCount });
+//   } catch (error) {
+//     console.error('Error fetching movies:', error);
+//     res.status(500).json({ error: 'Failed to fetch movies' });
+//   }
+// };
+
+// // Get a movie by ID
+// const getMovieById = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const movie = await prisma.movie.findUnique({ where: { id: parseInt(id) } });
+//     if (movie) {
+//       res.json(movie);
+//     } else {
+//       res.status(404).json({ error: 'Movie not found' });
+//     }
+//   } catch (err) {
+//     res.status(500).json({ error: 'Failed to fetch movie' });
+//   }
+// };
+
+// // Create a new movie
+// const createMovie = async (req, res) => {
+//   const { title, duration, description, channelId, typeId, categoryId, videoUrl } = req.body;
+//   try {
+//     const existingMovie = await prisma.movie.findFirst({ where: { videoUrl } });
+//     if (existingMovie) {
+//       return res.status(400).json({ error: 'This video URL already exists' });
+//     }
+
+//     const newMovie = await prisma.movie.create({
+//       data: { title, duration, description, channelId, typeId, categoryId, videoUrl },
+//     });
+
+//     io.emit('movieCreated', newMovie);
+
+//     res.status(201).json(newMovie);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.status(500).json({ error: 'Failed to create movie' });
+//   }
+// };
+
+// // Update a movie by ID
+// const updateMovie = async (req, res) => {
+//   const { id } = req.params;
+//   const { title, duration, description, channelId, typeId, categoryId, videoUrl } = req.body;
+//   try {
+//     const updatedMovie = await prisma.movie.update({
+//       where: { id: parseInt(id) },
+//       data: { title, duration, description, channelId, typeId, categoryId, videoUrl },
+//     });
+
+//     io.emit('movieUpdated', updatedMovie);
+
+//     res.json(updatedMovie);
+//   } catch (err) {
+//     res.status(500).json({ error: 'Failed to update movie' });
+//   }
+// };
+
+// // Delete a movie by ID
+// const deleteMovie = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     await prisma.movie.delete({ where: { id: parseInt(id) } });
+
+//     io.emit('movieDeleted', { id: parseInt(id) });
+
+//     res.status(204).send();
+//   } catch (err) {
+//     res.status(500).json({ error: 'Failed to delete movie' });
+//   }
+// };
+
+// module.exports = {
+//   getMovies,
+//   getMovieById,
+//   createMovie,
+//   updateMovie,
+//   deleteMovie,
+// };

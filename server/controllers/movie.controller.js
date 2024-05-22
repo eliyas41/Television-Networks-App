@@ -94,7 +94,10 @@ const createMovie = async (req, res) => {
     const newMovie = await prisma.movie.create({
       data: { title, duration, description, channelId, typeId, categoryId, videoUrl },
     });
-    res.status(201).json(newMovie);
+    res.status(201).json({
+      message: "Created movie successfully",
+      data: newMovie
+    });
   } catch (err) {
     console.log(err.message)
     res.status(500).json({ error: 'Failed to create movie' });

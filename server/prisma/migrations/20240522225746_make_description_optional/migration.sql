@@ -3,7 +3,7 @@ CREATE TABLE "Movie" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "duration" INTEGER NOT NULL,
-    "description" TEXT NOT NULL,
+    "description" TEXT,
     "videoUrl" TEXT NOT NULL,
     "channelId" INTEGER NOT NULL,
     "typeId" INTEGER NOT NULL,

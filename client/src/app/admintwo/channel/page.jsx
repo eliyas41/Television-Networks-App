@@ -11,6 +11,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 const style = {
   position: "absolute",
@@ -29,6 +32,11 @@ const page = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [isActive, setIsActive] = useState(true);
+
+  const handleSwitchChange = () => {
+    setIsActive((prevIsActive) => !prevIsActive);
+  };
   return (
     <div className="  mx-70 ">
       <div className="flex justify-around mx-70 mt-3">
@@ -61,7 +69,7 @@ const page = () => {
 
           <div className="mr-10">
             <Button onClick={handleOpen} className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">Add Channel</Button>
-            
+
             <Modal
               keepMounted
               open={open}
@@ -97,14 +105,14 @@ const page = () => {
                 </div>
 
                 <div className="flex justify-end gap-8 mt-28">
-                    <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
-                      {" "}
-                      Cancel
-                    </button>
-                    <button className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
-                      {" "}
-                      Add
-                    </button>
+                  <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
+                    {" "}
+                    Cancel
+                  </button>
+                  <button className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
+                    {" "}
+                    Add
+                  </button>
                 </div>
               </Box>
             </Modal>
@@ -164,7 +172,7 @@ const page = () => {
           <p className="mr-5"> GOT </p>{" "}
         </div>
         <div className="mr-14">
-          <label
+          {/* <label
             htmlFor="Toggle2"
             className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800 bg-gray-100 "
           >
@@ -175,7 +183,13 @@ const page = () => {
               <div className="absolute left-0 w-9 h-9 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-600 "></div>
             </span>
             <span className="bg-gray-300 ">Activate</span>
-          </label>
+          </label> */}
+          <FormGroup>
+            <FormControlLabel
+              label={isActive ? <div className='text-green-600'>Active</div> : <div className='text-red-600'>Inactive</div>}
+              control={<Switch checked={isActive} onChange={handleSwitchChange} />}
+            />
+          </FormGroup>
         </div>
         <div className="flex gap-6">
           <div>

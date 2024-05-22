@@ -23,10 +23,10 @@ generator client {
 }
 
 model Movie {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   duration    Int
-  description String
+  description String?
   videoUrl    String
   channelId   Int
   typeId      Int

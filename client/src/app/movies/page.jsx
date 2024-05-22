@@ -38,6 +38,26 @@ export default function MenuAppBar() {
     getMovies();
   }, [])
 
+  function formatDuration(durationInMilliseconds) {
+    // Convert milliseconds to seconds
+    const durationInSeconds = durationInMilliseconds / 1000;
+
+    // Calculate hours, minutes, and seconds
+    const hours = Math.floor(durationInSeconds / 3600);
+    const minutes = Math.floor((durationInSeconds % 3600) / 60);
+    // const seconds = Math.floor(durationInSeconds % 60);
+
+    // Pad with zeros and format
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    // const formattedSeconds = String(seconds).padStart(2, '0');
+
+    // Return formatted duration
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+
+
+
   return (
     <section className='flex'>
       <div className='bg-custom-white-light hidden md:block md:w-[12%]'>
@@ -112,8 +132,8 @@ export default function MenuAppBar() {
                     </div>
 
                     <CardActions className='flex flex-col' disableSpacing>
-                      <div className='text-white font-extrabold md:pl-48'>
-                        {duration}
+                      <div className='text-white font-medium md:pl-48'>
+                        {formatDuration(duration)}
                       </div>
 
                       <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
@@ -136,132 +156,6 @@ export default function MenuAppBar() {
               )
             })
           }
-          {/* <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
-            <div className='pt-72 md:pt-0'>
-              <CardContent>
-                <Typography variant="body2" color="text.primary">
-                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
-                </Typography>
-              </CardContent>
-            </div>
-
-            <CardActions className='flex flex-col' disableSpacing>
-              <div className='text-white font-extrabold md:pl-48'>
-                2h 22m
-              </div>
-
-              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
-                <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-              </div>
-
-            </CardActions>
-          </Card>
-
-          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
-            <div className='pt-72 md:pt-0'>
-              <CardContent>
-                <Typography variant="body2" color="text.primary">
-                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
-                </Typography>
-              </CardContent>
-            </div>
-
-            <CardActions className='flex flex-col' disableSpacing>
-              <div className='text-white font-extrabold md:pl-48'>
-                2h 22m
-              </div>
-
-              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
-                <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-              </div>
-
-            </CardActions>
-          </Card>
-
-
-          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
-            <div className='pt-72 md:pt-0'>
-              <CardContent>
-                <Typography variant="body2" color="text.primary">
-                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
-                </Typography>
-              </CardContent>
-            </div>
-
-            <CardActions className='flex flex-col' disableSpacing>
-              <div className='text-white font-extrabold md:pl-48'>
-                2h 22m
-              </div>
-
-              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
-                <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-              </div>
-
-            </CardActions>
-          </Card>
-
-
-          <Card sx={{ maxWidth: 300, height: 400, marginTop: 8 }} className={`${style.card__container} flex flex-cow md:flex-col`}>
-            <div className='pt-72 md:pt-0'>
-              <CardContent>
-                <Typography variant="body2" color="text.primary">
-                  <small className='text-xl text-white font-bold'>The Hunger Game</small>
-                </Typography>
-              </CardContent>
-            </div>
-
-            <CardActions className='flex flex-col' disableSpacing>
-              <div className='text-white font-extrabold md:pl-48'>
-                2h 22m
-              </div>
-
-              <div className='flex flex-col md:flex-row pt-28 md:pt-60 gap-8 md:gap-3'>
-                <IconButton aria-label="add to favorites">
-                  <PlayCircleOutlineRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-
-                <IconButton aria-label="add to favorites">
-                  <FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} />
-                </IconButton>
-              </div>
-
-            </CardActions>
-          </Card> */}
-
         </div>
       </Box>
     </section>

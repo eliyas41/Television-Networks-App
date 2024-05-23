@@ -22,8 +22,6 @@ export default function MenuAppBar() {
   const [network, setNetwork] = useState('');
   const [category, setCategory] = useState('');
   const [page, setPage] = useState(1);
-  const [favorites, setFavorites] = useState([]);
-  const [watchLater, setWatchLater] = useState([]);
 
   const getMovies = async () => {
     try {

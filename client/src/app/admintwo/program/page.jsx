@@ -102,6 +102,15 @@ const Page = () => {
     setIsActive((prevIsActive) => !prevIsActive);
   };
 
+  function formatDuration(durationInMilliseconds) {
+    const durationInSeconds = durationInMilliseconds / 1000;
+    const hours = Math.floor(durationInSeconds / 3600);
+    const minutes = Math.floor((durationInSeconds % 3600) / 60);
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+
   return (
     <div>
 
@@ -283,7 +292,7 @@ const Page = () => {
                 <p className="mr-5 w-10"> {title} </p>{" "}
               </div>
               <div className="flex mr-12">
-                <p className="mr-5 w-10"> {duration} </p>{" "}
+                <p className="mr-5 w-10"> {formatDuration(duration)} </p>{" "}
               </div>
               <div className="flex mr-12">
                 <p className="mr-5 w-44"> {description ? description.slice(0, 50) + "..." : ''} </p>{" "}

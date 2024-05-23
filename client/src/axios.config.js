@@ -8,4 +8,4 @@ const axiosBaseUrl = axios.create({
   baseURL: 'https://television-networks-app-gzf2.onrender.com/api',
 })
 
-export default axiosBaseUrl
+export default axiosBaseUrl;

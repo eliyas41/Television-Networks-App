@@ -34,15 +34,15 @@ const page = ({ children }) => {
         <div className="mx-5 ">
           <GiBurningTree size={60} />
         </div>
-        <div className="mx-16 my-2">
+        <div className="mx-12 my-2">
           <h1 className="text-xl">T- Movie</h1>
         </div>
 
-        <div className=" flex w-full bg-slate-900">
+        <div className=" flex w-full justify-between bg-slate-900">
           <div className="mx-10 flex justify-start">
-            <h2 className="text-xl mr-100 text-white mt-4">Dashboard</h2>
+            <h2 className="text-xl text-white mt-4">Dashboard</h2>
           </div>
-          <div className="flex justify-between  mt-4 ml-100 ">
+          <div className="flex justify-between mt-4 mr-8">
             <small className="">
               <IoNotifications size={30} style={{ fill: "white" }} />
             </small>

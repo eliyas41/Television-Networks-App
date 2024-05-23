@@ -17,8 +17,8 @@ const page = () => {
         phone: phone,
         password: password
       })
-      console.log(response)
-      localStorage.setItem("token", response.data.token);
+      // console.log(response.data)
+      localStorage.setItem("user", JSON.stringify(response.data));
       window.location.href = '/admintwo';
     } catch (error) {
       console.log(error)

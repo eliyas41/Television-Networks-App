@@ -28,7 +28,7 @@ const style = {
   p: 4,
 };
 
-const page = () => {
+const Page = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -172,18 +172,6 @@ const page = () => {
           <p className="mr-5"> GOT </p>{" "}
         </div>
         <div className="mr-14">
-          {/* <label
-            htmlFor="Toggle2"
-            className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800 bg-gray-100 "
-          >
-            <span className="bg-gray-300 ">Deactivate</span>
-            <span className="relative bg-gray-300">
-              <input id="Toggle2" type="checkbox" className="hidden peer" />
-              <div className="w-24 h-9 rounded-full shadow peer-checked:dark:bg-violet-600"></div>
-              <div className="absolute left-0 w-9 h-9 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-600 "></div>
-            </span>
-            <span className="bg-gray-300 ">Activate</span>
-          </label> */}
           <FormGroup>
             <FormControlLabel
               label={isActive ? <div className='text-green-600'>Active</div> : <div className='text-red-600'>Inactive</div>}
@@ -209,4 +197,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

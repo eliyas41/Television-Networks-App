@@ -126,7 +126,7 @@ export default function MenuAppBar() {
             const duration = movie.duration;
             const title = movie.title;
             return (
-              <div className='flex justify-center items-center'>
+              <div key={id} className='flex justify-center items-center'>
                 <div className={`shadow-2xl w-80 h-96 bg-slate-700 border-xl my-10 mx-8 md:mx-2 rounded-lg ${style.card__container}`}>
                   <div className='text-xl text text-white'>
                     <div className='flex justify-end mb-52 px-10 py-6'>{formatDuration(duration)}</div>

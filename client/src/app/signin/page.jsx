@@ -5,7 +5,7 @@ import classes from "./signin.module.css"
 import axios from "../../axios.config";
 // import { ClipLoader } from "react-spinners";
 
-const page = () => {
+const Page = () => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -89,4 +89,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

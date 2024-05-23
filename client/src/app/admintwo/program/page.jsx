@@ -29,7 +29,7 @@ const style = {
   p: 4,
 };
 
-const page = () => {
+const Page = () => {
   const [movies, setMovies] = useState([]);
 
   const [videoUrl, setVideoUrl] = useState('')
@@ -317,4 +317,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

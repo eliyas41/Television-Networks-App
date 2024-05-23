@@ -65,7 +65,7 @@ const MovieCard = () => {
             </CardActions>
             <CardContent>
               <Typography className="text-white font-light text-xl" variant="body2" color="text.secondary">
-                Live TV's
+                Live TV
               </Typography>
               <small className="text-white">+5000 Channels</small>
             </CardContent>

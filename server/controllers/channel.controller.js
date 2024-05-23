@@ -68,7 +68,10 @@ const createChannel = async (req, res) => {
     }
 
     const newChannel = await prisma.channel.create({ data: { name } });
-    res.status(201).json(newChannel);
+    res.status(201).json({
+      message: "Channel created successfully!",
+      data: newChannel
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to create channel' });
   }

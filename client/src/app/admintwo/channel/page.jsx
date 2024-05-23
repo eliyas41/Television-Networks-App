@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CiExport } from "react-icons/ci";
 import { IoFilterOutline } from "react-icons/io5";
 import { FaSort } from "react-icons/fa";
@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import axios from "../../../axios.config"
+import { channels } from "@/components/api/data";
 
 const style = {
   position: "absolute",
@@ -29,10 +31,39 @@ const style = {
 };
 
 const Page = () => {
+  const [channelsName, setChannelsName] = useState([]);
+  const [channel, setChannel] = useState('')
+  // console.log(channel)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isActive, setIsActive] = useState(true);
+
+  const getChannelsName = async () => {
+    try {
+      const response = await axios.get('/channels')
+      // console.log(response)
+      setChannelsName(response.data.channels)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getChannelsName()
+  }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post('/channel', {
+        name: channel
+      })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleSwitchChange = () => {
     setIsActive((prevIsActive) => !prevIsActive);
@@ -95,25 +126,29 @@ const Page = () => {
                     Name
                   </Typography>
                 </div>
-                <div className="flex justify-center">
-                  <input
-                    type="text"
-                    placeholder="add name "
-                    className="w-300 bg-slate-400  focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1 text-white"
-                    style={{ fontSize: "18pt", height: "42px", width: "400px" }}
-                  />
-                </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="flex justify-center">
+                    <input
+                      type="text"
+                      value={channel}
+                      onChange={(e) => setChannel(e.target.value)}
+                      placeholder="add name "
+                      className="w-300 bg-slate-400  focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1 text-white"
+                      style={{ fontSize: "18pt", height: "42px", width: "400px" }}
+                    />
+                  </div>
+                  <div className="flex justify-end gap-8 mt-28">
+                    <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
+                      {" "}
+                      Cancel
+                    </button>
+                    <button type="submit" className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
+                      {" "}
+                      Add
+                    </button>
+                  </div>
+                </form>
 
-                <div className="flex justify-end gap-8 mt-28">
-                  <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
-                    {" "}
-                    Cancel
-                  </button>
-                  <button className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
-                    {" "}
-                    Add
-                  </button>
-                </div>
               </Box>
             </Modal>
           </div>
@@ -167,32 +202,41 @@ const Page = () => {
         />
       </div>
 
-      <div className="flex justify-start my-10 mx-16">
-        <div className="flex mr-12">
-          <p className="mr-5"> GOT </p>{" "}
-        </div>
-        <div className="mr-14">
-          <FormGroup>
-            <FormControlLabel
-              label={isActive ? <div className='text-green-600'>Active</div> : <div className='text-red-600'>Inactive</div>}
-              control={<Switch checked={isActive} onChange={handleSwitchChange} />}
-            />
-          </FormGroup>
-        </div>
-        <div className="flex gap-6">
-          <div>
-            {" "}
-            <IoEye className="w-5 h-5" />{" "}
-          </div>
-          <div>
-            {" "}
-            <MdEdit className="w-5 h-5" />{" "}
-          </div>
-          <div>
-            <AiOutlineDelete className="w-5 h-5" />
-          </div>
-        </div>
-      </div>
+      {
+        channels.map((channel, id) => {
+          const name = channel.name
+          return (
+            <div key={id} className="flex justify-start my-10 mx-16">
+
+              <div className="flex mr-12">
+                <p className="mr-5"> {name} </p>{" "}
+              </div>
+              <div className="mr-14">
+                <FormGroup>
+                  <FormControlLabel
+                    label={isActive ? <div className='text-green-600'>Active</div> : <div className='text-red-600'>Inactive</div>}
+                    control={<Switch checked={isActive} onChange={handleSwitchChange} />}
+                  />
+                </FormGroup>
+              </div>
+              <div className="flex gap-6">
+                <div>
+                  {" "}
+                  <IoEye className="w-5 h-5" />{" "}
+                </div>
+                <div>
+                  {" "}
+                  <MdEdit className="w-5 h-5" />{" "}
+                </div>
+                <div>
+                  <AiOutlineDelete className="w-5 h-5" />
+                </div>
+              </div>
+            </div>
+          )
+        })
+      }
+
     </div>
   );
 };

@@ -44,23 +44,7 @@ export default function MenuAppBar() {
 
   useEffect(() => {
     getMovies();
-  }, [search, network, category, page]);
-
-  const toggleFavorite = (movie) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.includes(movie.id)
-        ? prevFavorites.filter((favId) => favId !== movie.id)
-        : [...prevFavorites, movie.id]
-    );
-  };
-
-  const toggleWatchLater = (movie) => {
-    setWatchLater((prevWatchLater) =>
-      prevWatchLater.includes(movie.id)
-        ? prevWatchLater.filter((watchId) => watchId !== movie.id)
-        : [...prevWatchLater, movie.id]
-    );
-  };
+  }, []);
 
   function formatDuration(durationInMilliseconds) {
     const durationInSeconds = durationInMilliseconds / 1000;

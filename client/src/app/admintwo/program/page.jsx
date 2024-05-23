@@ -273,7 +273,7 @@ const Page = () => {
           const duration = movie.duration
           const description = movie.description
           return (
-            <div className="flex justify-start my-10 mx-16 hover:bg-blue-400">
+            <div key={index} className="flex justify-start my-10 mx-16 hover:bg-blue-400">
               <div className="flex mr-12">
                 <p className="mr-5"> {id} </p>{" "}
               </div>

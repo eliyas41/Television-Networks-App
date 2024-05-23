@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
-const jwtSecret = process.env.JWT_SECRET;
+const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret_key'; // Ensure you have a secret key
 
 // Define the Zod schema
 const userSchema = z.object({
@@ -45,9 +45,9 @@ const createUser = async (req, res) => {
     });
 
     // Generate a JWT token
-    const token = jwt.sign({ userId: newUser.id }, jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ phone: newUser.phone }, jwtSecret, { expiresIn: '1h' });
 
-    res.status(201).json({ user: newUser, token });
+    res.status(201).json({ token: token });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors });
@@ -77,9 +77,9 @@ const loginUser = async (req, res) => {
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ userId: user.id }, jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ phone: user.phone }, jwtSecret, { expiresIn: '1h' });
 
-    res.status(200).json({ user, token });
+    res.status(200).json({ token: token });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors });
@@ -92,3 +92,4 @@ module.exports = {
   createUser,
   loginUser,
 };
+

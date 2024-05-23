@@ -25,7 +25,7 @@ const Banner = () => {
             <div> <small>5:30PM</small></div>
             <div><CloudRoundedIcon /> <small><span>18<sup>o</sup></span></small></div>
             <div className='text-gray-300'><SearchRoundedIcon /></div>
-            <Link href="/admintwo" className='hover:text-green-400'>
+            <Link href="/login" className='hover:text-green-400'>
               <div className='hidden md:block'><AccountCircleOutlinedIcon /></div>
             </Link>
           </div>

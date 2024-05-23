@@ -77,7 +77,7 @@ export default function MenuAppBar() {
         <NavBar />
       </div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ bgcolor: '#1B1C3A', height: "150px", paddingTop: "40px" }}>
+        <AppBar position="static" sx={{ bgcolor: '#1B1C3A', height: "150px", paddingTop: "40px" }} className='sticky top-0'>
           <Toolbar>
             <Link href="/">
               <IconButton size="large" color="inherit">
@@ -102,7 +102,10 @@ export default function MenuAppBar() {
             </header>
             <div>
               <IconButton size="large" color="inherit">
-                <AccountCircle />
+                {/* <AccountCircle /> */}
+                <Link href="/login" className='hover:text-green-400'>
+                  <div className='hidden md:block'><AccountCircle /></div>
+                </Link>
               </IconButton>
             </div>
           </Toolbar>
@@ -115,7 +118,7 @@ export default function MenuAppBar() {
           </div>
         </AppBar>
 
-        <div className='md:grid-cols-3 grid md:mx-10 grid-cols-1 mx-8'>
+        <div className='md:grid-cols-3 grid w-[100%] grid-cols-1 bg-slate-600'>
           {movies.filter((movie) => {
             return search.toLowerCase() === '' ? movie : movie.title.toLowerCase().includes(search.toLowerCase());
           }).map((movie, id) => {
@@ -123,15 +126,17 @@ export default function MenuAppBar() {
             const duration = movie.duration;
             const title = movie.title;
             return (
-              <div className={`shadow-2xl w-80 h-96 bg-slate-700 border-xl my-10 rounded-lg ${style.card__container}`}>
-                <div className='text-xl text text-white'>
-                  <div className='flex justify-end mb-52 px-10 py-6'>{formatDuration(duration)}</div>
-                  <div className='mx-12 mb-4'></div>
-                  <div className='mx-12 mb-4'>{title}</div>
-                  <div className='mx-12 mb-2 flex gap-5'>
-                    <div><PlayCircleOutlineOutlinedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
-                    <div><AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
-                    <div><FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+              <div className='flex justify-center items-center'>
+                <div className={`shadow-2xl w-80 h-96 bg-slate-700 border-xl my-10 mx-8 md:mx-2 rounded-lg ${style.card__container}`}>
+                  <div className='text-xl text text-white'>
+                    <div className='flex justify-end mb-52 px-10 py-6'>{formatDuration(duration)}</div>
+                    <div className='mx-12 mb-4'></div>
+                    <div className='mx-12 mb-4'>{title}</div>
+                    <div className='mx-12 mb-2 flex gap-5'>
+                      <div><PlayCircleOutlineOutlinedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                      <div><AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                      <div><FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                    </div>
                   </div>
                 </div>
               </div>

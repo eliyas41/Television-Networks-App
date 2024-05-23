@@ -7,7 +7,7 @@ import styles from "./navBar.module.css"
 
 const NavigationSection = () => {
   return (
-    <section className={`${styles.nav__wrapper} h-44 md:h-screen`}>
+    <section className={`${styles.nav__wrapper} h-44 md:h-screen sticky top-0`}>
       <div className={`flex flex-col justify-between items-center ${styles.nav__container}`}>
         <div className='hidden md:block text-white'>Logo</div>
         <div className={`flex flex-row md:flex-col justify-between items-center ${styles.icons__container}`}>

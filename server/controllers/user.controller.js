@@ -2,8 +2,10 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const { z } = require('zod');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
+const jwtSecret = process.env.JWT_SECRET;
 
 // Define the Zod schema
 const userSchema = z.object({
@@ -42,7 +44,10 @@ const createUser = async (req, res) => {
       data: { phone, email, password: hashedPassword },
     });
 
-    res.status(201).json(newUser);
+    // Generate a JWT token
+    const token = jwt.sign({ userId: newUser.id }, jwtSecret, { expiresIn: '1h' });
+
+    res.status(201).json({ user: newUser, token });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors });
@@ -71,7 +76,10 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ error: 'Incorrect phone or password' });
     }
 
-    res.status(200).json(user);
+    // Generate a JWT token
+    const token = jwt.sign({ userId: user.id }, jwtSecret, { expiresIn: '1h' });
+
+    res.status(200).json({ user, token });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors });

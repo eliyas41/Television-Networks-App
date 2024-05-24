@@ -33,6 +33,8 @@ const style = {
 const Page = () => {
   const [channelsName, setChannelsName] = useState([]);
   const [channel, setChannel] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const [error, setError] = useState('')
   // console.log(channel)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -42,7 +44,7 @@ const Page = () => {
   const getChannelsName = async () => {
     try {
       const response = await axios.get('/channels')
-      // console.log(response)
+      // console.log(response.data.channels)
       setChannelsName(response.data.channels)
     } catch (error) {
       console.log(error)
@@ -59,9 +61,11 @@ const Page = () => {
       const response = await axios.post('/channel', {
         name: channel
       })
-      console.log(response)
+      console.log(response.data.message)
+      setSuccessMessage(response.data.message)
     } catch (error) {
       console.log(error)
+      setError(error.response.data.error)
     }
   }
 
@@ -126,28 +130,40 @@ const Page = () => {
                     Name
                   </Typography>
                 </div>
-                <form onSubmit={handleSubmit}>
-                  <div className="flex justify-center">
-                    <input
-                      type="text"
-                      value={channel}
-                      onChange={(e) => setChannel(e.target.value)}
-                      placeholder="add name "
-                      className="w-300 bg-slate-400  focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1 text-white"
-                      style={{ fontSize: "18pt", height: "42px", width: "400px" }}
-                    />
-                  </div>
-                  <div className="flex justify-end gap-8 mt-28">
-                    <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
-                      {" "}
-                      Cancel
-                    </button>
-                    <button type="submit" className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
-                      {" "}
-                      Add
-                    </button>
-                  </div>
-                </form>
+                {
+                  successMessage ? (
+                    <p className="text-green-500">{successMessage}</p>
+                  ) : (
+                    <form onSubmit={handleSubmit}>
+                      <div className="flex justify-center">
+                        <input
+                          type="text"
+                          value={channel}
+                          onChange={(e) => setChannel(e.target.value)}
+                          placeholder="add name "
+                          className="w-300 bg-slate-400  focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1 text-white"
+                          style={{ fontSize: "18pt", height: "42px", width: "400px" }}
+                          required
+                        />
+                      </div>
+                      <div className="flex justify-end gap-8 mt-28">
+                        <button className="shadow border  bg-slate-100 size-lg py-2 px-2 text-black">
+                          {" "}
+                          Cancel
+                        </button>
+                        <button type="submit" className="shadow border  bg-slate-900 text-white size-lg py-2 px-4">
+                          {" "}
+                          Add
+                        </button>
+                      </div>
+                    </form>
+                  )
+                }
+
+                {
+                  error && <p className="text-red-600">{error}</p>
+                }
+
 
               </Box>
             </Modal>
@@ -203,7 +219,7 @@ const Page = () => {
       </div>
 
       {
-        channels.map((channel, id) => {
+        channelsName.map((channel, id) => {
           const name = channel.name
           return (
             <div key={id} className="flex justify-start my-10 mx-16">

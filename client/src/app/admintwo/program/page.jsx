@@ -145,114 +145,131 @@ const Page = () => {
                   Add Program
                 </Typography>
 
-                <form onSubmit={handleSubmit}>
-                  <div className='flex justify-center gap-5'>
-                    <div className='flex flex-col'>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 5 }}>
-                        <p> Video URL</p>
-                        <input
-                          type="text"
-                          value={videoUrl}
-                          onChange={(e) => setVideoUrl(e.target.value)}
-                          placeholder='search'
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        />
-                        <hr />
-                      </Typography>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
-                        <p>Duration</p>
-                        <input
-                          type="text"
-                          value={duration}
-                          onChange={(e) => setDuration(e.target.value)}
-                          placeholder='search'
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        />
-                        <hr />
-                      </Typography>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
-                        <p>Channel</p>
-                        <input
-                          type="text"
-                          value={channel}
-                          onChange={(e) => setChannel(e.target.value)}
-                          placeholder='search'
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        />
-                        <hr />
-                      </Typography>
-                    </div>
+                {
+                  successMessage ? (
+                    <p className='text-green-600'>{successMessage}</p>
+                  ) : (
 
-                    <div className='flex flex-col'>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 5 }}>
-                        <p> Title</p>
-                        <input
-                          type="text"
-                          value={title}
-                          onChange={(e) => setTitle(e.target.value)}
-                          placeholder='search'
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        />
-                        <hr />
-                      </Typography>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
-                        <p>Category</p>
-                        <select
-                          value={category}
-                          onChange={(e) => setCategory(e.target.value)}
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        >
-                          <option value="" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            select
-                          </option>
-                          <option value="Recommended" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Recommended
-                          </option>
-                          <option value="Popular" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Popular
-                          </option>
-                          <option value="Featured" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Featured
-                          </option>
-                        </select>
-                        <hr />
-                      </Typography>
-                      <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
-                        <p>Type</p>
-                        <select
-                          value={type}
-                          onChange={(e) => setType(e.target.value)}
-                          className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
-                          style={{ fontSize: "18pt", height: "42px", width: "300px" }}
-                        >
-                          <option value="" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            select
-                          </option>
-                          <option value="Recommended" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Recommended
-                          </option>
-                          <option value="Popular" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Popular
-                          </option>
-                          <option value="Featured" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
-                            Featured
-                          </option>
-                        </select>
-                      </Typography>
-                    </div>
-                  </div>
-                  <div className='flex justify-end gap-8 mt-10'>
-                    <button className='shadow border text-black size-lg py-2 px-2 ' >Cancel
-                    </button>
-                    <button type="submit" className='shadow border  bg-slate-900 text-white size-lg py-2 px-2' > Add
-                    </button>
-                  </div>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                      <div className='flex justify-center gap-5'>
+                        <div className='flex flex-col'>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 5 }}>
+                            <p> Video URL</p>
+                            <input
+                              type="text"
+                              value={videoUrl}
+                              onChange={(e) => setVideoUrl(e.target.value)}
+                              placeholder='search'
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                              required
+                            />
+                            <hr />
+                          </Typography>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
+                            <p>Duration</p>
+                            <input
+                              type="text"
+                              value={duration}
+                              onChange={(e) => setDuration(e.target.value)}
+                              placeholder='search'
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                              required
+                            />
+                            <hr />
+                          </Typography>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
+                            <p>Channel</p>
+                            <input
+                              type="text"
+                              value={channel}
+                              onChange={(e) => setChannel(e.target.value)}
+                              placeholder='search'
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                              required
+                            />
+                            <hr />
+                          </Typography>
+                        </div>
+
+                        <div className='flex flex-col'>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 5 }}>
+                            <p> Title</p>
+                            <input
+                              type="text"
+                              value={title}
+                              onChange={(e) => setTitle(e.target.value)}
+                              placeholder='search'
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                              required
+                            />
+                            <hr />
+                          </Typography>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
+                            <p>Category</p>
+                            <select
+                              value={category}
+                              onChange={(e) => setCategory(e.target.value)}
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                              required
+                            >
+                              <option value="" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                select
+                              </option>
+                              <option value="Recommended" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Recommended
+                              </option>
+                              <option value="Popular" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Popular
+                              </option>
+                              <option value="Featured" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Featured
+                              </option>
+                            </select>
+                            <hr />
+                          </Typography>
+                          <Typography id="keep-mounted-modal-description" sx={{ mt: 3 }}>
+                            <p>Type</p>
+                            <select
+                              value={type}
+                              onChange={(e) => setType(e.target.value)}
+                              className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1"
+                              style={{ fontSize: "18pt", height: "42px", width: "300px" }}
+                            >
+                              <option value="" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                select
+                              </option>
+                              <option value="Recommended" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Recommended
+                              </option>
+                              <option value="Popular" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Popular
+                              </option>
+                              <option value="Featured" className="w-300 bg-slate-400 focus:outline-none focus:border-sky-400 focus:ring-sky-500 focus:ring-1" style={{ fontSize: "18pt", height: "42px", width: "300px" }}>
+                                Featured
+                              </option>
+                            </select>
+                          </Typography>
+                        </div>
+                      </div>
+                      <div className='flex justify-end gap-8 mt-10'>
+                        <button className='shadow border text-black size-lg py-2 px-2 ' >Cancel
+                        </button>
+                        <button type="submit" className='shadow border  bg-slate-900 text-white size-lg py-2 px-2' > Add
+                        </button>
+                      </div>
+                    </form>
+                  )
+                }
+
+                {
+                  error && <p className='text-red-600'>{error}</p>
+                }
+
               </Box>
             </Modal>
           </div>

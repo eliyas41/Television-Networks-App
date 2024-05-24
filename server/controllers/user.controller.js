@@ -41,14 +41,16 @@ const createUser = async (req, res) => {
 
     // Create a new user
     const newUser = await prisma.user.create({
-      message: "User created!",
       data: { phone, email, password: hashedPassword },
     });
 
     // Generate a JWT token
     const token = jwt.sign({ phone: newUser.phone }, jwtSecret, { expiresIn: '1h' });
 
-    res.status(201).json({ token: token });
+    res.status(201).json({
+      message: "User created!",
+      token: token
+    });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ error: err.errors });

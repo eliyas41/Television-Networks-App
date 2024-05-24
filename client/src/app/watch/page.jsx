@@ -2,7 +2,10 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Watch Later</div>
+    <center >
+      <h1 className='text-5xl mt-24'>It's All About Time</h1>
+      <p className='text-4xl mt-32'>😢!</p>
+    </center>
   )
 }
 

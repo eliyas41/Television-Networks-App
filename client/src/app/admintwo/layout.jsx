@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { PiCarProfileLight } from "react-icons/pi";
 import { VscListUnordered } from "react-icons/vsc";
-import Link from "next/link";
 import { AiFillSignal } from "react-icons/ai";
 import { GiBurningTree } from "react-icons/gi";
-import { FaCircle } from "react-icons/fa";
-import { IoNotifications } from "react-icons/io5";
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import { DashboardTwo } from "./dashboardtwo/page"
 
 const sideBar = [
@@ -44,11 +44,13 @@ const page = ({ children }) => {
           </div>
           <div className="flex justify-between mt-4 mr-8">
             <small className="">
-              <IoNotifications size={30} style={{ fill: "white" }} />
+              <NotificationsNoneOutlinedIcon sx={{ fontSize: "30px", fill: "white" }} />
             </small>
-            <small className="">
-              <FaCircle size={30} style={{ fill: "white" }} />
-            </small>
+            <Link href='/'>
+              <small className="">
+                <AccountCircleOutlinedIcon sx={{ fontSize: "30px", fill: "white" }} />
+              </small>
+            </Link>
           </div>
         </div>
       </div>

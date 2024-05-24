@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState, useEffect } from 'react';
 import { CiExport } from "react-icons/ci";
 import { MdPeopleAlt } from "react-icons/md";
 import { IoFilterOutline } from "react-icons/io5";
@@ -9,29 +9,11 @@ import { VictoryLabel } from 'victory';
 import { FaCircle } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-// import axios from "../../../axios.config"
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
+import axios from "../../../axios.config"
 
-
-const card = [
-  {
-    title: "System User",
-    Icon: MdPeopleAlt,
-    dataNumber: "37",
-    monthPercent: "+12 This Month"
-  },
-  {
-    title: "System User",
-    Icon: MdPeopleAlt,
-    dataNumber: "37",
-    monthPercent: "+12 This Month"
-  },
-  {
-    title: "System User",
-    Icon: MdPeopleAlt,
-    dataNumber: "37",
-    monthPercent: "+12 This Month"
-  }
-]
 
 const graph = [
   {
@@ -62,10 +44,11 @@ const graph = [
 
 ]
 
-const page = () => {
-  // const [systemUser, setSystemUser] = useState([])
-  // const [program, setProgram] = useState([])
-  // const [channel, setChannel] = useState([])
+const Page = () => {
+  const [systemUser, setSystemUser] = useState([])
+  const [channel, setChannel] = useState([])
+  const [program, setProgram] = useState([])
+  // console.log(program)
 
   const data = [
     {
@@ -112,14 +95,43 @@ const page = () => {
     },
   ];
 
-  // const getSystemUser = async() => {
-  //   try {
-  //     const response = await axios.get('/')
-  //   } catch (error) {
+  const getSystemUsers = async () => {
+    try {
+      const response = await axios.get('/users')
+      const totalUser = response.data
+      // console.log(totalUser.length)
+      // console.log(response.data)
+      setSystemUser(totalUser.length)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  //   }
-  // }
+  const getChannels = async () => {
+    try {
+      const response = await axios.get('/channels')
+      // console.log(response.data.channels.length)
+      setChannel(response.data.channels.length)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
+  const getPrograms = async () => {
+    try {
+      const response = await axios.get('/movies')
+      // console.log(response.data.movies.length)
+      setProgram(response.data.movies.length)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getSystemUsers(),
+      getChannels(),
+      getPrograms()
+  }, [])
 
   return (
     <div className="w-100">
@@ -177,20 +189,40 @@ const page = () => {
       </div>
 
       <div className=' flex justify-around mt-10 gap-9 mb-16'>
-        {card.map(({ Icon, dataNumber, title, monthPercent }, ind) => (
-          // 
-          <Link key={ind} href={""}>
-            <div className=' shadow-2xl  py-3 px-10  mb-3 h-40'>
-              <div className='flex m-5'>
-                <div className='mr-5 text-lg'>{title}</div>
-                <div> <Icon className='w-10 h-10 bg-slate-900' style={{ fill: "white" }} /> </div>
-              </div>
-              <div className='text-lg'>{dataNumber}</div>
-              <div className='mb-16 text-lg'>{monthPercent}</div>
-
+        <Link href={""}>
+          <div className=' shadow-2xl  py-3 px-10  mb-3 h-40'>
+            <div className='flex m-5'>
+              <div className='mr-5 text-lg'>System User</div>
+              <div> <PeopleOutlineIcon sx={{ color: "red", fontSize: "50px" }} /></div>
             </div>
-          </Link>
-        ))}
+            <div className='text-lg'>{systemUser}</div>
+            <div className='mb-16 text-lg'>+12% This Month</div>
+          </div>
+        </Link>
+
+        <Link href={""}>
+          <div className=' shadow-2xl  py-3 px-10  mb-3 h-40'>
+            <div className='flex m-5'>
+              <div className='mr-5 text-lg'>Program</div>
+              <div><SlowMotionVideoIcon sx={{ color: "red", fontSize: "50px" }} /> </div>
+            </div>
+            <div className='text-lg'>{program}</div>
+            <div className='mb-16 text-lg'>+12% This Month</div>
+          </div>
+        </Link>
+
+
+        <Link href={""}>
+          <div className=' shadow-2xl  py-3 px-10  mb-3 h-40'>
+            <div className='flex m-5'>
+              <div className='mr-5 text-lg'>Channel</div>
+              <div> <LiveTvIcon sx={{ color: "red", fontSize: "50px" }} /> </div>
+            </div>
+            <div className='text-lg'>{channel}</div>
+            <div className='mb-16 text-lg'>+12% This Month</div>
+          </div>
+        </Link>
+
       </div>
 
       <fieldset className=' flex justify-center w-200 ml-50'>
@@ -290,4 +322,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

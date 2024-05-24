@@ -1,9 +1,9 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import classes from "./signin.module.css"
 import axios from "../../axios.config";
-// import { ClipLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 const Page = () => {
   const [phone, setPhone] = useState('')
@@ -14,16 +14,19 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setLoading(true)
       const response = await axios.post("/register", {
         email: email,
         phone: phone,
         password: password
       })
       // console.log(response.data.token)
+      setLoading(false)
       localStorage.setItem("user", JSON.stringify(response.data));
       window.location.href = '/admintwo';
     } catch (error) {
-      console.log(error)
+      // console.log(error)
+      setLoading(false)
     }
   }
 
@@ -70,7 +73,12 @@ const Page = () => {
           <button
             type="submit"
             className={`text-white ${classes.login_signInButton}`}>
-            Sign in
+            {
+              loading ? (<ClipLoader size={25} color="#36d7b7" />) : (
+                'Sign in'
+              )
+            }
+
           </button>
         </form>
 

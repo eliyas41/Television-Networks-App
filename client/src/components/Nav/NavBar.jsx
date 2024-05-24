@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilled';
@@ -26,7 +27,10 @@ const NavigationSection = () => {
               <AccessTimeFilledRoundedIcon style={{ fontSize: 40 }} />
             </a>
           </div>
-          <div className='md:hidden bg-custom-white-light text-white p-2 rounded-full mb-4 md:mb-0'><AccountCircleOutlinedIcon style={{ fontSize: 40 }} />
+          <div className='md:hidden bg-custom-white-light text-white p-2 rounded-full mb-4 md:mb-0'>
+            <Link href='/login' className='hover:text-green-400'>
+              <AccountCircleOutlinedIcon style={{ fontSize: 40 }} />
+            </Link>
           </div>
         </div>
       </div>

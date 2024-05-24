@@ -110,16 +110,18 @@ export default function MenuAppBar() {
             return (
               <div key={id} className='flex justify-center items-center'>
                 <div className={`shadow-2xl w-80 h-96 bg-slate-700 border-xl my-10 mx-8 md:mx-2 rounded-lg ${style.card__container}`}>
-                  <div className='text-xl text text-white'>
-                    <div className='flex justify-end mb-52 px-10 py-6'>{formatDuration(duration)}</div>
-                    <div className='mx-12 mb-4'></div>
-                    <div className='mx-12 mb-4'>{title}</div>
-                    <div className='mx-12 mb-2 flex gap-5'>
-                      <div><PlayCircleOutlineOutlinedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
-                      <div><AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
-                      <div><FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                  <Link href={videoLink} target='blank'>
+                    <div className='text-xl text text-white'>
+                      <div className='flex justify-end mb-52 px-10 py-6'>{formatDuration(duration)}</div>
+                      <div className='mx-12 mb-4'></div>
+                      <div className='mx-12 mb-4'>{title}</div>
+                      <div className='mx-12 mb-2 flex gap-5'>
+                        <div><PlayCircleOutlineOutlinedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                        <div><AccessTimeRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                        <div><FavoriteBorderRoundedIcon sx={{ color: "white", fontSize: "27px" }} /></div>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             )

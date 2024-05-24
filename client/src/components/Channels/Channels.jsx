@@ -26,14 +26,12 @@ const Channels = () => {
   return (
     <div className='text-white'>
       <div className={`${style.channels_wrapper} flex md:flex-col  justify-between items-center h-36 md:h-screen scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300  overflow-y-scroll`}>
-
-
         {
           channels.map((channel, id) => {
             let name = channel.name
             // console.log(name)
             return (
-              <div key={id} className='text-2xl font-bold'>
+              <div key={id} className='md:text-2xl p-6 font-bold'>
                 {name}
               </div>
             );

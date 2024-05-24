@@ -11,7 +11,7 @@ const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret_key'; // Ensure you
 const userSchema = z.object({
   phone: z.string().nonempty({ message: 'Phone number is required' }),
   email: z.string().email({ message: 'Invalid email address' }),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters long' })
+  password: z.string().min(6, { message: 'Password must be at least 6 characters long' })
 });
 
 // Create a new user
@@ -41,6 +41,7 @@ const createUser = async (req, res) => {
 
     // Create a new user
     const newUser = await prisma.user.create({
+      message: "User created!",
       data: { phone, email, password: hashedPassword },
     });
 
@@ -88,8 +89,28 @@ const loginUser = async (req, res) => {
   }
 };
 
+
+// Get all users
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await prisma.user.findMany({
+      select: {
+        phone: true,
+        email: true,
+        // Exclude the password from the response
+      },
+    });
+
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve users' });
+  }
+};
+
+
 module.exports = {
   createUser,
   loginUser,
+  getAllUsers,
 };
 

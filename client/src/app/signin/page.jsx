@@ -10,6 +10,8 @@ const Page = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,13 +22,15 @@ const Page = () => {
         phone: phone,
         password: password
       })
-      // console.log(response.data.token)
+      // console.log(response)
       setLoading(false)
+      setSuccessMessage(response.data.message);
       localStorage.setItem("user", JSON.stringify(response.data));
       window.location.href = '/admintwo';
     } catch (error) {
-      // console.log(error)
+      // console.log(error.response.data.error)
       setLoading(false)
+      setError(error.response.data.error);
     }
   }
 
@@ -39,6 +43,9 @@ const Page = () => {
       {/* form */}
       <div className={classes.login_container}>
         <h1>Sign In</h1>
+        {
+          successMessage ? (<p className="text-green-600">{successMessage}</p>) : ('')
+        }
         <form onSubmit={handleSubmit}>
           <div>
             <input

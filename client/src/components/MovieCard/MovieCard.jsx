@@ -53,7 +53,7 @@ const MovieCard = () => {
     <section className="slider-container w-[100%] md:w-[95%] md:ml-6">
       {/* <div className="slider-container w-[100%] md:w-[95%] md:ml-6"> */}
       <Slider {...settings} className='flex flex-row items-center justify-between gap-1'>
-        <Link href="tv-live" passHref >
+        <Link href="/tv-live" passHref >
           <Card
             className="bg-custom-dark-light-blue flex flex-col items-center gap-14 cursor-pointer"
             sx={{ width: 220, height: 275 }}
@@ -91,7 +91,7 @@ const MovieCard = () => {
           </Card>
         </Link>
 
-        <Link href="tv-shows" passHref>
+        <Link href="/tv-shows" passHref>
           <Card
             className="bg-custom-dark-light-blue flex flex-col items-center gap-14"
             sx={{ width: 220, height: 275 }}
@@ -110,7 +110,7 @@ const MovieCard = () => {
           </Card>
         </Link>
 
-        <Link href="sports" passHref>
+        <Link href="/sports" passHref>
           <Card
             className="bg-custom-dark-light-blue flex flex-col items-center gap-14"
             sx={{ width: 220, height: 275 }}

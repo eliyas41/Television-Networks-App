@@ -15,7 +15,6 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import axios from "../../../axios.config"
-import { channels } from "@/components/api/data";
 
 const style = {
   position: "absolute",
@@ -33,9 +32,9 @@ const style = {
 const Page = () => {
   const [channelsName, setChannelsName] = useState([]);
   const [channel, setChannel] = useState('')
+  console.log(channelsName)
   const [successMessage, setSuccessMessage] = useState('')
   const [error, setError] = useState('')
-  // console.log(channel)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,7 +43,7 @@ const Page = () => {
   const getChannelsName = async () => {
     try {
       const response = await axios.get('/channels')
-      // console.log(response.data.channels)
+      console.log(response.data.channels)
       setChannelsName(response.data.channels)
     } catch (error) {
       console.log(error)
@@ -61,7 +60,7 @@ const Page = () => {
       const response = await axios.post('/channel', {
         name: channel
       })
-      console.log(response.data.message)
+      console.log(response.data)
       setSuccessMessage(response.data.message)
     } catch (error) {
       console.log(error)

@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+// the main function for the seed js to export the data which pridefiend here 
 async function main() {
   // Seed types
   const types = [
